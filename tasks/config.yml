@@ -1,0 +1,7 @@
+---
+- name: Ensure config dir is present
+  file: path={{uwsgi_config_path}} state=directory mode=0755
+
+- name: Create configurations for python apps
+  template: src=apps.j2 dest={{uwsgi_config_path}}/{{ item }}.ini
+  with_items: "{{ uwsgi_apps.keys() }}"

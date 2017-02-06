@@ -1,0 +1,6 @@
+---
+# tasks file for ansible-uwsgi-systemd
+- include: install_centos7.yml
+  tags: install,uwsgi
+- include: config.yml
+  tags: config,uwsgi
