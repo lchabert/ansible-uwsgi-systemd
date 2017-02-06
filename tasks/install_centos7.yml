@@ -15,14 +15,13 @@
     - python34-pip
   when: uwsgi_python34
 
-
 - name: Install uwsgi 2.7 packages (system-wide)
   pip: name=uwsgi executable=pip2.7 version={{uwsgi_version}}
   when: not uwsgi_python34
 
 - name: Install uwsgi 3.4 packages (system-wide)
   pip: name=uwsgi executable=pip3.4 version={{uwsgi_version}}
-  when: not uwsgi_python34
+  when: uwsgi_python34
 
 - name: Install systemd startup
   copy: src=uwsgi.service dest={{uwsgi_systemd_path}}
